@@ -28,14 +28,14 @@ public class RXChangeThread {
         Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                Log.d(TAG, "subscribe thread:" + Thread.currentThread());
+                Log.d(TAG, "subscribe thread:" + Thread.currentThread().getName());
                 e.onNext(1);
             }
         });
         Consumer<Integer> consumer = new Consumer<Integer>() {
             @Override
             public void accept(Integer integer) throws Exception {
-                Log.d(TAG, "accept: thread->" + Thread.currentThread());
+                Log.d(TAG, "accept: thread->" + Thread.currentThread().getName());
                 Log.d(TAG, "accept: " + integer);
             }
         };
@@ -56,7 +56,7 @@ public class RXChangeThread {
         Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                Log.d(TAG, "subscribe: thread:" + Thread.currentThread());
+                Log.d(TAG, "subscribe: thread:" + Thread.currentThread().getName());
                 e.onNext(1);
                 e.onNext(2);
                 e.onNext(3);
@@ -68,15 +68,16 @@ public class RXChangeThread {
                 .doOnNext(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.d(TAG, "accept: " + integer + " thread after mainThread:" + Thread.currentThread());
+                        Log.d(TAG, "accept: " + integer + " thread after mainThread:" + Thread.currentThread().getName());
                     }
                 }).observeOn(Schedulers.io())
                 .doOnNext(new Consumer<Integer>() {
                     @Override
                     public void accept(Integer integer) throws Exception {
-                        Log.d(TAG, "accept: " + integer + " thread after ioThread:" + Thread.currentThread());
+                        Log.d(TAG, "accept: " + integer + " thread after ioThread:" + Thread.currentThread().getName());
                     }
                 }).subscribe();
         Log.d(TAG, "changeThreadTest2: end");
     }
+
 }
