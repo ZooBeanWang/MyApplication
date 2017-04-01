@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitProvider {
-    private static final String BASEURL = "https://api.douban.com/";
+    private static final String BASEURL = "https://mail.qq.com/cgi-bin/loginpage/";
 
     public static Retrofit get() {
         OkHttpClient.Builder builder = new OkHttpClient().newBuilder();

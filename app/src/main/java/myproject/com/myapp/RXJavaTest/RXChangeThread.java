@@ -1,13 +1,21 @@
 package myproject.com.myapp.RXJavaTest;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import myproject.com.myapp.RetrofitTest.Api;
+import myproject.com.myapp.RetrofitTest.RetrofitProvider;
+import myproject.com.myapp.RetrofitTest.entity.LoginRequest;
+import myproject.com.myapp.RetrofitTest.entity.LoginResponse;
 
 /**
  * Created by wang on 01/04/17.
@@ -78,6 +86,41 @@ public class RXChangeThread {
                     }
                 }).subscribe();
         Log.d(TAG, "changeThreadTest2: end");
+    }
+
+    /**
+     * Rx和Retrofit结合进行网络请求
+     */
+    public static void retrofitRXTest(final Context context) {
+        Api api = RetrofitProvider.get().create(Api.class);
+        api.login(new LoginRequest())
+                .subscribeOn(Schedulers.io())//网络请求在子线程
+                .observeOn(AndroidSchedulers.mainThread())//请求结果在主线程中展示
+                .subscribe(new Observer<LoginResponse>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        Log.d(TAG, "onSubscribe: ");
+                    }
+
+                    @Override
+                    public void onNext(LoginResponse value) {
+                        Log.d(TAG, "onNext: ");
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.e(TAG, "onError: ", e);
+                        Toast.makeText(context, "登录失败", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "onComplete: ");
+                        Toast.makeText(context, "登录成功", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
     }
 
 }
