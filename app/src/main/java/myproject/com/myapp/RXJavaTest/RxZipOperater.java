@@ -6,9 +6,18 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
+import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import myproject.com.myapp.RetrofitTest.Api;
+import myproject.com.myapp.RetrofitTest.RetrofitProvider;
+import myproject.com.myapp.RetrofitTest.entity.UserBaseInfoRequest;
+import myproject.com.myapp.RetrofitTest.entity.UserBaseInfoResponse;
+import myproject.com.myapp.RetrofitTest.entity.UserExtraInfoRequest;
+import myproject.com.myapp.RetrofitTest.entity.UserExtraInfoResponse;
+import myproject.com.myapp.RetrofitTest.entity.UserInfo;
 
 /**
  * Zip通过一个函数将多个Observable发送的事件结合到一起，然后发送这些组合到一起的事件.
@@ -222,4 +231,27 @@ public class RxZipOperater {
             }
         });
     }
+
+
+    /**
+     * 从两个地方获取信息然后组合发送出去
+     */
+    public static void loginZipTest() {
+        Api api = RetrofitProvider.get().create(Api.class);
+        Observable<UserBaseInfoResponse> observable1 = api.getUserBaseInfo(new UserBaseInfoRequest()).subscribeOn(Schedulers.io());
+        Observable<UserExtraInfoResponse> observable2 = api.getUserExtraInfo(new UserExtraInfoRequest()).subscribeOn(Schedulers.io());
+        Observable.zip(observable1, observable2, new BiFunction<UserBaseInfoResponse, UserExtraInfoResponse, UserInfo>() {
+            @Override
+            public UserInfo apply(UserBaseInfoResponse userBaseInfoResponse, UserExtraInfoResponse userExtraInfoResponse) throws Exception {
+                return null;
+            }
+        }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<UserInfo>() {
+                    @Override
+                    public void accept(UserInfo userInfo) throws Exception {
+                        Log.d(TAG, "accept: UserInfo");
+                    }
+                });
+    }
+
 }
