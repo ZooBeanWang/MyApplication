@@ -1,6 +1,8 @@
 package myproject.com.myapp.RXJavaTest;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +12,16 @@ import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
+import myproject.com.myapp.RetrofitTest.Api;
+import myproject.com.myapp.RetrofitTest.RetrofitProvider;
+import myproject.com.myapp.RetrofitTest.entity.LoginRequest;
+import myproject.com.myapp.RetrofitTest.entity.LoginResponse;
+import myproject.com.myapp.RetrofitTest.entity.RegisterRequest;
+import myproject.com.myapp.RetrofitTest.entity.RegisterResponse;
 
 /**
  * Created by wang on 01/04/17.
@@ -98,4 +108,36 @@ public class RXOperator {
             }
         });
     }
+
+    public static void testLogin(final Context context){
+        final Api api = RetrofitProvider.get().create(Api.class);
+        api.register(new RegisterRequest())
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Consumer<RegisterResponse>() {
+                    @Override
+                    public void accept(RegisterResponse registerResponse) throws Exception {
+                        Log.d(TAG, "accept: dosomethings");
+                    }
+                }).observeOn(Schedulers.io())
+                .flatMap(new Function<RegisterResponse, ObservableSource<LoginResponse>>() {
+                    @Override
+                    public ObservableSource<LoginResponse> apply(RegisterResponse registerResponse) throws Exception {
+                        return api.login(new LoginRequest());
+                    }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<LoginResponse>() {
+                    @Override
+                    public void accept(LoginResponse loginResponse) throws Exception {
+                        Toast.makeText(context, "登录成功", Toast.LENGTH_SHORT).show();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Toast.makeText(context, "登录失败", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+
 }
