@@ -13,8 +13,8 @@ import io.reactivex.functions.Consumer;
  * Created by wang on 01/04/17.
  */
 
-public class RXBaseUse {
-    private static final String TAG = "RXBaseUse";
+public class RxBaseUse {
+    private static final String TAG = "RxBaseUse";
 
     /**
      * 测试1：最简单的使用方法

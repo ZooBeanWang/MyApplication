@@ -21,8 +21,8 @@ import myproject.com.myapp.RetrofitTest.entity.LoginResponse;
  * Created by wang on 01/04/17.
  */
 
-public class RXChangeThread {
-    private static final String TAG = "RXChangeThread";
+public class RxChangeThread {
+    private static final String TAG = "RxChangeThread";
 
     /**
      * 切换线程：

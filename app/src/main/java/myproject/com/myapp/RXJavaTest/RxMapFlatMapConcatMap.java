@@ -27,8 +27,8 @@ import myproject.com.myapp.RetrofitTest.entity.RegisterResponse;
  * Created by wang on 01/04/17.
  */
 
-public class RXOperator {
-    private static final String TAG = "RXOperator";
+public class RxMapFlatMapConcatMap {
+    private static final String TAG = "RxMapFlatMapConcatMap";
 
     /**
      * map操作符对上游发送的每一个事件应用一个函数, 使得每一个事件都按照指定的函数去变化.
