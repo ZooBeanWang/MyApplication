@@ -1,4 +1,4 @@
-package myproject.com.myapp.RetrofitTest.entity;
+package myproject.com.myapp.RxJavaTest.RxRetrofit.entity;
 
 /**
  * Author: Season(ssseasonnn@gmail.com)
@@ -6,5 +6,5 @@ package myproject.com.myapp.RetrofitTest.entity;
  * Time: 16:10
  * FIXME
  */
-public class UserBaseInfoRequest {
+public class UserBaseInfoResponse {
 }

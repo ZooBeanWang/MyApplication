@@ -1,4 +1,4 @@
-package myproject.com.myapp.RetrofitTest.entity;
+package myproject.com.myapp.RxJavaTest.RxRetrofit.entity;
 
 /**
  * Author: Season(ssseasonnn@gmail.com)
@@ -6,5 +6,5 @@ package myproject.com.myapp.RetrofitTest.entity;
  * Time: 11:31
  * FIXME
  */
-public class LoginResponse {
+public class RegisterResponse {
 }

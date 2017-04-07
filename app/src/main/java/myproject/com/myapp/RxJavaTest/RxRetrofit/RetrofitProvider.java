@@ -1,4 +1,4 @@
-package myproject.com.myapp.RetrofitTest;
+package myproject.com.myapp.RxJavaTest.RxRetrofit;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 

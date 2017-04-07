@@ -1,4 +1,4 @@
-package myproject.com.myapp.RXJavaTest;
+package myproject.com.myapp.RxJavaTest;
 
 import android.util.Log;
 
@@ -11,13 +11,13 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import myproject.com.myapp.RetrofitTest.Api;
-import myproject.com.myapp.RetrofitTest.RetrofitProvider;
-import myproject.com.myapp.RetrofitTest.entity.UserBaseInfoRequest;
-import myproject.com.myapp.RetrofitTest.entity.UserBaseInfoResponse;
-import myproject.com.myapp.RetrofitTest.entity.UserExtraInfoRequest;
-import myproject.com.myapp.RetrofitTest.entity.UserExtraInfoResponse;
-import myproject.com.myapp.RetrofitTest.entity.UserInfo;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.Api;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.RetrofitProvider;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserBaseInfoRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserBaseInfoResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserExtraInfoRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserExtraInfoResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserInfo;
 
 /**
  * Zip通过一个函数将多个Observable发送的事件结合到一起，然后发送这些组合到一起的事件.

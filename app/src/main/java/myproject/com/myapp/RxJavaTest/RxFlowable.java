@@ -1,4 +1,4 @@
-package myproject.com.myapp.RXJavaTest;
+package myproject.com.myapp.RxJavaTest;
 
 import android.util.Log;
 

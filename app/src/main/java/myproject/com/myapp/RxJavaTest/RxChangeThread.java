@@ -1,4 +1,4 @@
-package myproject.com.myapp.RXJavaTest;
+package myproject.com.myapp.RxJavaTest;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,10 +12,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import myproject.com.myapp.RetrofitTest.Api;
-import myproject.com.myapp.RetrofitTest.RetrofitProvider;
-import myproject.com.myapp.RetrofitTest.entity.LoginRequest;
-import myproject.com.myapp.RetrofitTest.entity.LoginResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.Api;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.RetrofitProvider;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.LoginRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.LoginResponse;
 
 /**
  * Created by wang on 01/04/17.

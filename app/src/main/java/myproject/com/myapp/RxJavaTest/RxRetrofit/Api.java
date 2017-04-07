@@ -1,14 +1,14 @@
-package myproject.com.myapp.RetrofitTest;
+package myproject.com.myapp.RxJavaTest.RxRetrofit;
 
 import io.reactivex.Observable;
-import myproject.com.myapp.RetrofitTest.entity.LoginRequest;
-import myproject.com.myapp.RetrofitTest.entity.LoginResponse;
-import myproject.com.myapp.RetrofitTest.entity.RegisterRequest;
-import myproject.com.myapp.RetrofitTest.entity.RegisterResponse;
-import myproject.com.myapp.RetrofitTest.entity.UserBaseInfoRequest;
-import myproject.com.myapp.RetrofitTest.entity.UserBaseInfoResponse;
-import myproject.com.myapp.RetrofitTest.entity.UserExtraInfoRequest;
-import myproject.com.myapp.RetrofitTest.entity.UserExtraInfoResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.LoginRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.LoginResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.RegisterRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.RegisterResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserBaseInfoRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserBaseInfoResponse;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserExtraInfoRequest;
+import myproject.com.myapp.RxJavaTest.RxRetrofit.entity.UserExtraInfoResponse;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
